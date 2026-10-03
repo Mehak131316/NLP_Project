@@ -1,0 +1,46 @@
+Query ID,Query,Type,Pipeline,Relevant,Retrieved,Precision,Recall,F1,P@5,R@5,Time (ms),Relevance Source
+Q01,stipend,Unigram,Pipeline A,4,4,1.0,1.0,1.0,1.0,1.0,0.241,PROVISIONAL
+Q01,stipend,Unigram,Pipeline B,4,4,1.0,1.0,1.0,1.0,1.0,15.301,PROVISIONAL
+Q01,stipend,Unigram,Final Pipeline,4,4,1.0,1.0,1.0,1.0,1.0,9.142,PROVISIONAL
+Q02,non-compete,Unigram,Pipeline A,8,8,1.0,1.0,1.0,1.0,0.625,0.265,PROVISIONAL
+Q02,non-compete,Unigram,Pipeline B,8,10,0.8,1.0,0.889,1.0,0.625,10.016,PROVISIONAL
+Q02,non-compete,Unigram,Final Pipeline,8,8,1.0,1.0,1.0,1.0,0.625,9.196,PROVISIONAL
+Q03,gratuity,Unigram,Pipeline A,5,5,1.0,1.0,1.0,1.0,1.0,0.285,PROVISIONAL
+Q03,gratuity,Unigram,Pipeline B,5,5,1.0,1.0,1.0,1.0,1.0,8.811,PROVISIONAL
+Q03,gratuity,Unigram,Final Pipeline,5,5,1.0,1.0,1.0,1.0,1.0,8.528,PROVISIONAL
+Q04,notice period,Bigram,Pipeline A,9,9,1.0,1.0,1.0,1.0,0.556,0.684,PROVISIONAL
+Q04,notice period,Bigram,Pipeline B,9,9,1.0,1.0,1.0,1.0,0.556,10.627,PROVISIONAL
+Q04,notice period,Bigram,Final Pipeline,9,9,1.0,1.0,1.0,1.0,0.556,11.583,PROVISIONAL
+Q05,confidential information,Bigram,Pipeline A,19,20,0.95,1.0,0.974,1.0,0.263,0.88,PROVISIONAL
+Q05,confidential information,Bigram,Pipeline B,19,19,1.0,1.0,1.0,1.0,0.263,10.053,PROVISIONAL
+Q05,confidential information,Bigram,Final Pipeline,19,19,1.0,1.0,1.0,1.0,0.263,9.536,PROVISIONAL
+Q06,intellectual property,Bigram,Pipeline A,16,16,1.0,1.0,1.0,1.0,0.312,0.465,PROVISIONAL
+Q06,intellectual property,Bigram,Pipeline B,16,16,1.0,1.0,1.0,1.0,0.312,9.325,PROVISIONAL
+Q06,intellectual property,Bigram,Final Pipeline,16,16,1.0,1.0,1.0,1.0,0.312,9.594,PROVISIONAL
+Q07,governing law,Bigram,Pipeline A,15,16,0.938,1.0,0.968,1.0,0.333,0.533,PROVISIONAL
+Q07,governing law,Bigram,Pipeline B,15,15,1.0,1.0,1.0,1.0,0.333,9.585,PROVISIONAL
+Q07,governing law,Bigram,Final Pipeline,15,16,0.938,1.0,0.968,1.0,0.333,9.662,PROVISIONAL
+Q08,shall not disclose,Trigram,Pipeline A,5,8,0.625,1.0,0.769,0.4,0.4,0.722,PROVISIONAL
+Q08,shall not disclose,Trigram,Pipeline B,5,5,1.0,1.0,1.0,1.0,1.0,10.183,PROVISIONAL
+Q08,shall not disclose,Trigram,Final Pipeline,5,5,1.0,1.0,1.0,1.0,1.0,10.788,PROVISIONAL
+Q09,shall not solicit,Trigram,Pipeline A,3,3,1.0,1.0,1.0,1.0,1.0,0.67,PROVISIONAL
+Q09,shall not solicit,Trigram,Pipeline B,3,3,1.0,1.0,1.0,1.0,1.0,10.491,PROVISIONAL
+Q09,shall not solicit,Trigram,Final Pipeline,3,3,1.0,1.0,1.0,1.0,1.0,10.098,PROVISIONAL
+Q10,work from home,Trigram,Pipeline A,2,3,0.667,1.0,0.8,0.667,1.0,0.409,PROVISIONAL
+Q10,work from home,Trigram,Pipeline B,2,3,0.667,1.0,0.8,0.667,1.0,9.759,PROVISIONAL
+Q10,work from home,Trigram,Final Pipeline,2,3,0.667,1.0,0.8,0.667,1.0,9.65,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Pipeline A,8,7,1.0,0.875,0.933,1.0,0.625,0.378,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Pipeline B,8,7,1.0,0.875,0.933,1.0,0.625,17.808,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Final Pipeline,8,7,1.0,0.875,0.933,1.0,0.625,17.359,PROVISIONAL
+Q12,bond AND training,Boolean AND,Pipeline A,6,4,1.0,0.667,0.8,1.0,0.667,0.436,PROVISIONAL
+Q12,bond AND training,Boolean AND,Pipeline B,6,4,1.0,0.667,0.8,1.0,0.667,17.544,PROVISIONAL
+Q12,bond AND training,Boolean AND,Final Pipeline,6,4,1.0,0.667,0.8,1.0,0.667,17.484,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Pipeline A,12,12,1.0,1.0,1.0,1.0,0.417,0.395,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Pipeline B,12,12,1.0,1.0,1.0,1.0,0.417,20.543,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Final Pipeline,12,12,1.0,1.0,1.0,1.0,0.417,21.878,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Pipeline A,25,25,1.0,1.0,1.0,1.0,0.2,0.428,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Pipeline B,25,25,1.0,1.0,1.0,1.0,0.2,17.601,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Final Pipeline,25,25,1.0,1.0,1.0,1.0,0.2,17.91,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline A,17,17,1.0,1.0,1.0,1.0,0.294,0.409,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline B,17,15,1.0,0.882,0.938,1.0,0.294,18.119,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Final Pipeline,17,17,1.0,1.0,1.0,1.0,0.294,17.324,PROVISIONAL

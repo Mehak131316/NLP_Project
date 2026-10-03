@@ -1,0 +1,5 @@
+doc_id,file,pages,ocr_pages,ocr_engine,ocr_mean_conf,ocr_repairs,ocr_unresolved_amounts
+D17,scan_a_fullpage.pdf,1.0,1,rapidocr 3.9.2,99.5,1,0
+D18,scan_b_mixed.pdf,2.0,1,rapidocr 3.9.2,99.5,1,0
+D19,scan_c_photo.png,1.0,1,rapidocr 3.9.2,99.4,1,0
+D20,scan_d_lowquality.pdf,1.0,1,rapidocr 3.9.2,99.2,1,1

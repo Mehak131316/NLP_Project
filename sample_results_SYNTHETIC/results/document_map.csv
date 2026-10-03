@@ -1,0 +1,21 @@
+doc_id,file,format,pages,ocr_pages,unread_scanned_pages,ocr_engine,ocr_mean_conf,ocr_repairs,ocr_unresolved_amounts
+D01,contract_01.pdf,pdf,1.0,0,0,,,0,0
+D02,contract_02.docx,docx,,0,0,,,0,0
+D03,contract_03.html,html,,0,0,,,0,0
+D04,contract_04.txt,txt,,0,0,,,0,0
+D05,contract_05.txt,txt,,0,0,,,0,0
+D06,contract_06.txt,txt,,0,0,,,0,0
+D07,contract_07.txt,txt,,0,0,,,0,0
+D08,contract_08.txt,txt,,0,0,,,0,0
+D09,contract_09.txt,txt,,0,0,,,0,0
+D10,contract_10.txt,txt,,0,0,,,0,0
+D11,contract_11.txt,txt,,0,0,,,0,0
+D12,contract_12.txt,txt,,0,0,,,0,0
+D13,contract_13.txt,txt,,0,0,,,0,0
+D14,contract_14.txt,txt,,0,0,,,0,0
+D15,contract_15.txt,txt,,0,0,,,0,0
+D16,contract_16.txt,txt,,0,0,,,0,0
+D17,scan_a_fullpage.pdf,pdf,1.0,1,0,rapidocr 3.9.2,99.5,1,0
+D18,scan_b_mixed.pdf,pdf,2.0,1,0,rapidocr 3.9.2,99.5,1,0
+D19,scan_c_photo.png,png,1.0,1,0,rapidocr 3.9.2,99.4,1,0
+D20,scan_d_lowquality.pdf,pdf,1.0,1,0,rapidocr 3.9.2,99.2,1,1

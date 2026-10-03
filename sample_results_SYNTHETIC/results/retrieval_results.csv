@@ -1,0 +1,46 @@
+Query ID,Query,Type,Pipeline,Retrieved Documents,# Results,Time (ms)
+Q01,stipend,Unigram,Pipeline A,D10 D20,2,0.222
+Q01,stipend,Unigram,Pipeline B,D10 D20,2,7.712
+Q01,stipend,Unigram,Final Pipeline,D10 D20,2,7.821
+Q02,non-compete,Unigram,Pipeline A,D05 D04 D10 D14 D15 D17 D18 D19,8,0.236
+Q02,non-compete,Unigram,Pipeline B,D05 D04 D15 D18 D10 D14 D17 D19,8,10.054
+Q02,non-compete,Unigram,Final Pipeline,D05 D04 D10 D14 D15 D17 D18 D19,8,9.104
+Q03,gratuity,Unigram,Pipeline A,,0,0.222
+Q03,gratuity,Unigram,Pipeline B,,0,8.93
+Q03,gratuity,Unigram,Final Pipeline,,0,10.768
+Q04,notice period,Bigram,Pipeline A,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19,19,0.326
+Q04,notice period,Bigram,Pipeline B,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19,19,9.105
+Q04,notice period,Bigram,Final Pipeline,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19,19,8.966
+Q05,confidential information,Bigram,Pipeline A,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,0.349
+Q05,confidential information,Bigram,Pipeline B,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,10.19
+Q05,confidential information,Bigram,Final Pipeline,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,10.088
+Q06,intellectual property,Bigram,Pipeline A,D08 D09 D12 D15,4,0.289
+Q06,intellectual property,Bigram,Pipeline B,D08 D09 D12 D15,4,10.275
+Q06,intellectual property,Bigram,Final Pipeline,D08 D09 D12 D15,4,12.07
+Q07,governing law,Bigram,Pipeline A,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20,20,0.347
+Q07,governing law,Bigram,Pipeline B,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20,20,12.863
+Q07,governing law,Bigram,Final Pipeline,D01 D02 D03 D04 D05 D06 D07 D08 D09 D10 D11 D12 D13 D14 D15 D16 D17 D18 D19 D20,20,13.229
+Q08,shall not disclose,Trigram,Pipeline A,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,0.367
+Q08,shall not disclose,Trigram,Pipeline B,D18 D04 D15 D02 D05 D06 D10 D17 D19 D01 D07 D08 D09 D12 D13 D16 D20,17,9.545
+Q08,shall not disclose,Trigram,Final Pipeline,D18 D04 D15 D02 D05 D06 D10 D17 D19 D01 D07 D08 D09 D12 D13 D16 D20,17,8.37
+Q09,shall not solicit,Trigram,Pipeline A,D02 D04 D06 D15,4,0.285
+Q09,shall not solicit,Trigram,Pipeline B,D04 D15 D02 D06,4,8.328
+Q09,shall not solicit,Trigram,Final Pipeline,D04 D15 D02 D06,4,8.704
+Q10,work from home,Trigram,Pipeline A,D07,1,0.259
+Q10,work from home,Trigram,Pipeline B,D07,1,9.151
+Q10,work from home,Trigram,Final Pipeline,D07,1,8.218
+Q11,probation AND termination,Boolean AND,Pipeline A,D04 D05 D10 D14 D15 D01 D02 D03 D06 D07 D08 D09 D11 D12 D13 D16 D17 D18 D19,19,0.386
+Q11,probation AND termination,Boolean AND,Pipeline B,D04 D05 D10 D14 D15 D01 D02 D03 D06 D07 D08 D09 D11 D12 D13 D16,16,14.696
+Q11,probation AND termination,Boolean AND,Final Pipeline,D04 D05 D10 D14 D15 D01 D02 D03 D06 D07 D08 D09 D11 D12 D13 D16,16,13.922
+Q12,bond AND training,Boolean AND,Pipeline A,D03 D14,2,0.319
+Q12,bond AND training,Boolean AND,Pipeline B,D03 D14,2,12.98
+Q12,bond AND training,Boolean AND,Final Pipeline,D03 D14,2,14.674
+Q13,stipend OR remuneration,Boolean OR,Pipeline A,D10 D20,2,0.362
+Q13,stipend OR remuneration,Boolean OR,Pipeline B,D10 D20,2,20.723
+Q13,stipend OR remuneration,Boolean OR,Final Pipeline,D10 D20,2,23.33
+Q14,confidential OR proprietary,Boolean OR,Pipeline A,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,0.459
+Q14,confidential OR proprietary,Boolean OR,Pipeline B,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,23.966
+Q14,confidential OR proprietary,Boolean OR,Final Pipeline,D18 D01 D02 D04 D05 D06 D07 D08 D09 D10 D12 D13 D15 D16 D17 D19 D20,17,16.391
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline A,D01 D02 D06 D07 D08 D09 D12 D13 D16 D20,10,0.351
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline B,D06 D02 D01 D07 D08 D09 D12 D13 D16 D20,10,15.89
+Q15,confidential AND NOT non-compete,Boolean NOT,Final Pipeline,D01 D02 D06 D07 D08 D09 D12 D13 D16 D20,10,17.612

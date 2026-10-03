@@ -1,0 +1,46 @@
+Query ID,Query,Type,Pipeline,Relevant,Retrieved,Precision,Recall,F1,P@5,R@5,Time (ms),Relevance Source
+Q01,stipend,Unigram,Pipeline A,2,2,1.0,1.0,1.0,1.0,1.0,0.222,PROVISIONAL
+Q01,stipend,Unigram,Pipeline B,2,2,1.0,1.0,1.0,1.0,1.0,15.203,PROVISIONAL
+Q01,stipend,Unigram,Final Pipeline,2,2,1.0,1.0,1.0,1.0,1.0,13.077,PROVISIONAL
+Q02,non-compete,Unigram,Pipeline A,8,8,1.0,1.0,1.0,1.0,0.625,0.238,PROVISIONAL
+Q02,non-compete,Unigram,Pipeline B,8,8,1.0,1.0,1.0,1.0,0.625,11.741,PROVISIONAL
+Q02,non-compete,Unigram,Final Pipeline,8,8,1.0,1.0,1.0,1.0,0.625,7.976,PROVISIONAL
+Q03,gratuity,Unigram,Pipeline A,0,0,1.0,,,1.0,,0.225,PROVISIONAL
+Q03,gratuity,Unigram,Pipeline B,0,0,1.0,,,1.0,,7.395,PROVISIONAL
+Q03,gratuity,Unigram,Final Pipeline,0,0,1.0,,,1.0,,7.416,PROVISIONAL
+Q04,notice period,Bigram,Pipeline A,19,19,1.0,1.0,1.0,1.0,0.263,0.335,PROVISIONAL
+Q04,notice period,Bigram,Pipeline B,19,19,1.0,1.0,1.0,1.0,0.263,8.0,PROVISIONAL
+Q04,notice period,Bigram,Final Pipeline,19,19,1.0,1.0,1.0,1.0,0.263,8.241,PROVISIONAL
+Q05,confidential information,Bigram,Pipeline A,17,17,1.0,1.0,1.0,1.0,0.294,0.696,PROVISIONAL
+Q05,confidential information,Bigram,Pipeline B,17,17,1.0,1.0,1.0,1.0,0.294,11.441,PROVISIONAL
+Q05,confidential information,Bigram,Final Pipeline,17,17,1.0,1.0,1.0,1.0,0.294,9.109,PROVISIONAL
+Q06,intellectual property,Bigram,Pipeline A,4,4,1.0,1.0,1.0,1.0,1.0,0.301,PROVISIONAL
+Q06,intellectual property,Bigram,Pipeline B,4,4,1.0,1.0,1.0,1.0,1.0,8.398,PROVISIONAL
+Q06,intellectual property,Bigram,Final Pipeline,4,4,1.0,1.0,1.0,1.0,1.0,8.896,PROVISIONAL
+Q07,governing law,Bigram,Pipeline A,20,20,1.0,1.0,1.0,1.0,0.25,0.373,PROVISIONAL
+Q07,governing law,Bigram,Pipeline B,20,20,1.0,1.0,1.0,1.0,0.25,9.277,PROVISIONAL
+Q07,governing law,Bigram,Final Pipeline,20,20,1.0,1.0,1.0,1.0,0.25,8.816,PROVISIONAL
+Q08,shall not disclose,Trigram,Pipeline A,17,17,1.0,1.0,1.0,1.0,0.294,0.299,PROVISIONAL
+Q08,shall not disclose,Trigram,Pipeline B,17,17,1.0,1.0,1.0,1.0,0.294,10.039,PROVISIONAL
+Q08,shall not disclose,Trigram,Final Pipeline,17,17,1.0,1.0,1.0,1.0,0.294,8.568,PROVISIONAL
+Q09,shall not solicit,Trigram,Pipeline A,4,4,1.0,1.0,1.0,1.0,1.0,0.336,PROVISIONAL
+Q09,shall not solicit,Trigram,Pipeline B,4,4,1.0,1.0,1.0,1.0,1.0,8.289,PROVISIONAL
+Q09,shall not solicit,Trigram,Final Pipeline,4,4,1.0,1.0,1.0,1.0,1.0,9.729,PROVISIONAL
+Q10,work from home,Trigram,Pipeline A,1,1,1.0,1.0,1.0,1.0,1.0,0.279,PROVISIONAL
+Q10,work from home,Trigram,Pipeline B,1,1,1.0,1.0,1.0,1.0,1.0,10.913,PROVISIONAL
+Q10,work from home,Trigram,Final Pipeline,1,1,1.0,1.0,1.0,1.0,1.0,9.603,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Pipeline A,16,19,0.842,1.0,0.914,1.0,0.312,0.423,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Pipeline B,16,16,1.0,1.0,1.0,1.0,0.312,14.376,PROVISIONAL
+Q11,probation AND termination,Boolean AND,Final Pipeline,16,16,1.0,1.0,1.0,1.0,0.312,17.288,PROVISIONAL
+Q12,bond AND training,Boolean AND,Pipeline A,2,2,1.0,1.0,1.0,1.0,1.0,0.324,PROVISIONAL
+Q12,bond AND training,Boolean AND,Pipeline B,2,2,1.0,1.0,1.0,1.0,1.0,16.226,PROVISIONAL
+Q12,bond AND training,Boolean AND,Final Pipeline,2,2,1.0,1.0,1.0,1.0,1.0,15.649,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Pipeline A,2,2,1.0,1.0,1.0,1.0,1.0,0.342,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Pipeline B,2,2,1.0,1.0,1.0,1.0,1.0,18.441,PROVISIONAL
+Q13,stipend OR remuneration,Boolean OR,Final Pipeline,2,2,1.0,1.0,1.0,1.0,1.0,20.526,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Pipeline A,17,17,1.0,1.0,1.0,1.0,0.294,0.888,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Pipeline B,17,17,1.0,1.0,1.0,1.0,0.294,17.735,PROVISIONAL
+Q14,confidential OR proprietary,Boolean OR,Final Pipeline,17,17,1.0,1.0,1.0,1.0,0.294,13.778,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline A,10,10,1.0,1.0,1.0,1.0,0.5,0.34,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Pipeline B,10,10,1.0,1.0,1.0,1.0,0.5,16.465,PROVISIONAL
+Q15,confidential AND NOT non-compete,Boolean NOT,Final Pipeline,10,10,1.0,1.0,1.0,1.0,0.5,17.608,PROVISIONAL

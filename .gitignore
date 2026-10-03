@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Project Specific (ignore large archives to prevent GitHub limits)
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore large log files
+*.log

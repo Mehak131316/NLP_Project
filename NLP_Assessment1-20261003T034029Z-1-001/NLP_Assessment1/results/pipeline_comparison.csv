@@ -1,0 +1,10 @@
+Measure,Pipeline A,Pipeline B,Final Pipeline
+Token Count,169729,290420,178427
+Vocabulary Size,13838,15054,15407
+Meaningful N-Grams,38929,21447,36104
+Domain Terms Preserved,10/14,14/14,14/14
+Negations Preserved,2/3,3/3,3/3
+Preprocessing Time (s),3.31,58.99,53.79
+Precision,0.945,0.964,0.974
+Recall,0.969,0.962,0.969
+F1,0.95,0.957,0.967

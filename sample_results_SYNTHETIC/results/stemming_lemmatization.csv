@@ -1,0 +1,19 @@
+Word,Porter,Snowball,Lancaster,WordNet (no POS),WordNet (POS),spaCy
+employees,employe,employe,employ,employee,employee,employee
+employer,employ,employ,employ,employer,employer,employer
+employment,employ,employ,employ,employment,employment,employment
+terminated,termin,termin,termin,terminated,terminate,terminate
+terminating,termin,termin,termin,terminating,terminate,terminate
+agreed,agre,agre,agree,agreed,agree,agree
+obligations,oblig,oblig,oblig,obligation,obligation,obligation
+confidential,confidenti,confidenti,confid,confidential,confidential,confidential
+provisions,provis,provis,provid,provision,provision,provision
+resigned,resign,resign,resign,resigned,resign,resign
+compensation,compens,compens,compens,compensation,compensation,compensation
+was,wa,was,was,wa,be,be
+binding,bind,bind,bind,binding,binding,bind
+better,better,better,bet,better,well,well
+solicited,solicit,solicit,solicit,solicited,solicit,solicit
+renewed,renew,renew,renew,renewed,renew,renew
+indemnities,indemn,indemn,indemn,indemnity,indemnity,indemnity
+paid,paid,paid,paid,paid,paid,pay

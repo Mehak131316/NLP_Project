@@ -1,0 +1,5 @@
+Measure,Before Processing,After Processing,Change %
+Documents,44,44,0.0
+Tokens,337719,178427,-47.2
+Unique Tokens,19966,15407,-22.8
+Vocabulary Size,16451,15375,-6.5

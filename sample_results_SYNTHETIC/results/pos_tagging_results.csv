@@ -1,0 +1,29 @@
+Word,Context,Gold,Default POS (spaCy),Custom POS (rules),Custom POS (ML),Default Correct,Rules Correct,ML Correct
+Employee,The Employee shall not sign a non-compete .,NN,NN,NN,NN,True,True,True
+shall,The Employee shall not sign a non-compete .,MD,MD,MD,MD,True,True,True
+sign,The Employee shall not sign a non-compete .,VB,VB,VB,VB,True,True,True
+non-compete,The Employee shall not sign a non-compete .,NN,NN,NN,NN,True,True,True
+Company,"The Company will pay a CTC of ₹12,00,000 per annum .",NN,NNP,NN,NN,False,True,True
+CTC,"The Company will pay a CTC of ₹12,00,000 per annum .",NN,NNP,NN,NN,False,True,True
+"₹12,00,000","The Company will pay a CTC of ₹12,00,000 per annum .",CD,NNP,CD,CD,False,True,True
+annum,"The Company will pay a CTC of ₹12,00,000 per annum .",NN,FW,NN,NN,False,True,True
+Agreement,Either party may terminate this Agreement by giving notice .,NN,NNP,NN,NN,False,True,True
+notice,Either party may terminate this Agreement by giving notice .,NN,NN,NN,NN,True,True,True
+Employee,The Employee shall serve the bond for 24 months .,NN,NN,NN,NN,True,True,True
+shall,The Employee shall serve the bond for 24 months .,MD,MD,MD,MD,True,True,True
+bond,The Employee shall serve the bond for 24 months .,NN,NN,NN,NN,True,True,True
+Intern,The Intern will receive a stipend w.e.f. 15 April 2026 .,NN,NNP,NN,NN,False,True,True
+stipend,The Intern will receive a stipend w.e.f. 15 April 2026 .,NN,NN,NN,NN,True,True,True
+w.e.f.,The Intern will receive a stipend w.e.f. 15 April 2026 .,IN,NN,IN,NN,False,True,False
+Employee,The Employee shall not solicit any client .,NN,NN,NN,NN,True,True,True
+shall,The Employee shall not solicit any client .,MD,MD,MD,MD,True,True,True
+shall,Confidential information shall not be disclosed .,MD,MD,MD,MD,True,True,True
+Employer,The Employer shall notice the breach promptly .,NN,NNP,NN,NN,False,True,True
+shall,The Employer shall notice the breach promptly .,MD,MD,MD,MD,True,True,True
+notice,The Employer shall notice the breach promptly .,VB,VB,VB,VB,True,True,True
+breach,The Employer shall notice the breach promptly .,NN,NN,NN,NN,True,True,True
+non-solicitation,A non-solicitation clause applies during the notice period .,NN,JJ,NN,NN,False,True,True
+notice,A non-solicitation clause applies during the notice period .,NN,NN,NN,NN,True,True,True
+Consultant,The Consultant shall bond the materials .,NN,NN,NN,NN,True,True,True
+shall,The Consultant shall bond the materials .,MD,MD,MD,MD,True,True,True
+bond,The Consultant shall bond the materials .,VB,VB,VB,VB,True,True,True

@@ -1,0 +1,29 @@
+S.No.,Word,category,BPE Tokens,bpe_subwords,nltk,spacy,custom,GPT-2 BPE,gpt2_subwords
+1,shall,common,shall,1,shall,shall,shall,shall,1
+2,employee,common,employee,1,employee,employee,employee,employ ee,2
+3,agreement,common,a g reement,3,agreement,agreement,agreement,ag reement,2
+4,this,common,this,1,this,this,this,this,1
+5,notice,common,notice,1,notice,notice,notice,notice,1
+6,probation,common,probation,1,probation,probation,probation,pro b ation,3
+7,period,common,period,1,period,period,period,period,1
+8,hereinafter,common,hereinafter,1,hereinafter,hereinafter,hereinafter,here ina fter,3
+9,ananya,rare,an any a,3,ananya,ananya,ananya,an anya,2
+10,early,rare,e ar ly,3,early,early,early,early,1
+11,gupta,rare,g u p ta,4,gupta,gupta,gupta,gu pta,2
+12,hours,rare,h o ur s,4,hours,hours,hours,hours,1
+13,internshipagreement,rare,in tern sh i pa g reement,7,internshipagreement,internshipagreement,internshipagreement,intern ship ag reement,4
+14,laptop,rare,la p to p,4,laptop,laptop,laptop,l aptop,2
+15,layer,rare,l ay er,3,layer,layer,layer,layer,1
+16,leaves,rare,le a ves,3,leaves,leaves,leaves,le aves,2
+17,non-compete,domain,n on - comp ete,5,non-compete,non - compete,non-compete,non - comp ete,4
+18,non-solicitation,domain,n on - solicit ation,5,non-solicitation,non - solicitation,non-solicitation,non - sol icit ation,5
+19,confidentiality,domain,confidential ity,2,confidentiality,confidentiality,confidentiality,conf idential ity,3
+20,remuneration,domain,re m u n er ation,6,remuneration,remuneration,remuneration,rem uner ation,3
+21,probation,domain,probation,1,probation,probation,probation,pro b ation,3
+22,termination,domain,termination,1,termination,termination,termination,termination,1
+23,indemnify,domain,in de m n i f y,7,indemnify,indemnify,indemnify,ind emn ify,3
+24,stipend,domain,stipend,1,stipend,stipend,stipend,st ip end,3
+25,gratuity,domain,g r at u ity,5,gratuity,gratuity,gratuity,gr at uity,3
+26,work-from-home,domain,w ork - f rom - h ome,8,work-from-home,work - from - home,work-from-home,work - from - home,5
+27,hereinafter,domain,hereinafter,1,hereinafter,hereinafter,hereinafter,here ina fter,3
+28,jurisdiction,domain,jurisdiction,1,jurisdiction,jurisdiction,jurisdiction,j ur isd iction,4

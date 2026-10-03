@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract-Sentry - NLP Text Analysis & Retrieval</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <div id="provisional-banner" class="hidden">
+        <span class="icon">⚠️</span>
+        <span class="text">Evaluation numbers are PROVISIONAL. Please complete manual relevance judgments in annotations/relevance.csv.</span>
+    </div>
+    
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">⚖️</div>
+                <h1>Contract-Sentry</h1>
+                <p>Domain-Specific Text Analysis</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item" data-target="upload">
+                    <span class="icon">📤</span> Upload Documents
+                </button>
+                <button class="nav-item active" data-target="docs">
+                    <span class="icon">📄</span> Document Stats
+                </button>
+                <button class="nav-item" data-target="tokenization">
+                    <span class="icon">✂️</span> Tokenization
+                </button>
+                <button class="nav-item" data-target="preprocessing">
+                    <span class="icon">🧹</span> Preprocessing
+                </button>
+                <button class="nav-item" data-target="pos">
+                    <span class="icon">🏷️</span> POS Tagging
+                </button>
+                <button class="nav-item" data-target="ner">
+                    <span class="icon">🏢</span> NER Analysis
+                </button>
+                <button class="nav-item" data-target="ngram">
+                    <span class="icon">🔗</span> N-Gram Analysis
+                </button>
+                <button class="nav-item" data-target="bpe">
+                    <span class="icon">🧩</span> BPE Analysis
+                </button>
+                <button class="nav-item" data-target="retrieval">
+                    <span class="icon">🔍</span> Query & Retrieval
+                </button>
+                <button class="nav-item" data-target="analyze">
+                    <span class="icon">🔬</span> Pipeline Analysis
+                </button>
+                <button class="nav-item" data-target="evaluation">
+                    <span class="icon">📊</span> Evaluation & Compare
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="theme-info">Indian Legal Domain Theme</div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Loader -->
+            <div id="loader" class="loader-container">
+                <div class="spinner"></div>
+                <p>Loading legal corpus data...</p>
+            </div>
+
+            <!-- Sections -->
+            <section id="upload" class="view-section">
+                <header class="section-header">
+                    <h2>Document Upload</h2>
+                    <p>Upload PDFs, Word documents, or scanned images for OCR and analysis</p>
+                </header>
+                <div class="panel upload-panel">
+                    <div class="upload-area" id="drop-zone">
+                        <span class="upload-icon">📤</span>
+                        <h3>Drag & Drop Documents Here</h3>
+                        <p class="text-muted">Supports .pdf, .docx, .txt, .png, .jpg (OCR enabled)</p>
+                        <input type="file" id="file-input" multiple accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" class="hidden-input">
+                        <button class="primary-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                    </div>
+                    <div id="file-list" class="file-list"></div>
+                    <button id="process-btn" class="primary-btn process-btn hidden">Process Documents</button>
+                </div>
+            </section>
+
+            <section id="docs" class="view-section active">
+                <header class="section-header">
+                    <h2>Document Corpus Statistics</h2>
+                    <p>Overview of the loaded legal documents</p>
+                </header>
+                <div class="cards-container" id="doc-summary-cards"></div>
+                <div class="panel">
+                    <div class="table-container">
+                        <table id="doc-stats-table"></table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tokenization" class="view-section">
+                <header class="section-header">
+                    <h2>Tokenization Comparison</h2>
+                    <p>Comparing built-in vs custom tokenizers on legal text</p>
+                </header>
+                <div class="panel">
+                    <div class="table-container">
+                        <table id="token-comp-table"></table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="preprocessing" class="view-section">
+                <header class="section-header">
+                    <h2>Preprocessing & Normalization</h2>
+                    <p>Stop word removal, Stemming, and Lemmatization</p>
+                </header>
+                <div class="grid-2">
+                    <div class="panel">
+                        <h3>Overall Impact</h3>
+                        <div class="table-container">
+                            <table id="prep-results-table"></table>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Stemming vs Lemmatization</h3>
+                        <div class="table-container">
+                            <table id="stem-lemma-table"></table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="pos" class="view-section">
+                <header class="section-header">
+                    <h2>Part of Speech (POS) Tagging</h2>
+                    <p>Default vs Custom domain-specific POS Tagging</p>
+                </header>
+                <div class="panel">
+                    <div class="table-container">
+                        <table id="pos-table"></table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ner" class="view-section">
+                <header class="section-header">
+                    <h2>Named Entity Recognition (NER)</h2>
+                    <p>Domain-specific entity extraction</p>
+                </header>
+                <div class="panel">
+                    <div class="table-container">
+                        <table id="ner-table"></table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ngram" class="view-section">
+                <header class="section-header">
+                    <h2>N-Gram Analysis</h2>
+                    <p>Frequent phrases and multi-word terms</p>
+                </header>
+                <div class="grid-2">
+                    <div class="panel">
+                        <h3>N-Gram Distribution</h3>
+                        <div class="table-container">
+                            <table id="ngram-table"></table>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Top 5-Grams</h3>
+                        <div id="top-ngrams-container" class="tags-container"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="bpe" class="view-section">
+                <header class="section-header">
+                    <h2>BPE Tokenization</h2>
+                    <p>Subword tokenization analysis for legal domain</p>
+                </header>
+                <div class="panel">
+                    <div class="table-container">
+                        <table id="bpe-table"></table>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="retrieval" class="view-section">
+                <header class="section-header">
+                    <h2>Document Retrieval</h2>
+                    <p>Search through the precomputed inverted index queries</p>
+                </header>
+                <div class="panel search-panel">
+                    <div class="search-filters" style="margin-bottom: 1rem;">
+                        <input type="text" id="query-input" placeholder="Type a custom query (e.g., 'machine AND learning')" style="width: 60%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                        <select id="query-type">
+                            <option value="Keyword">Keyword</option>
+                            <option value="Phrase">Phrase</option>
+                            <option value="Boolean AND">Boolean AND</option>
+                            <option value="Boolean OR">Boolean OR</option>
+                        </select>
+                        <button id="search-btn" class="primary-btn">Search</button>
+                    </div>
+                    
+                    <div class="search-filters">
+                        <label for="stored-queries">Or select a Stored Query:</label>
+                        <select id="stored-queries">
+                            <option value="">-- Choose a query --</option>
+                        </select>
+                    </div>
+                    <div id="query-details" class="query-details hidden">
+                        <div class="detail-badge">Type: <span id="q-type"></span></div>
+                        <div class="detail-badge">Pipeline: <span id="q-pipeline"></span></div>
+                        <div class="detail-badge">Time: <span id="q-time"></span> ms</div>
+                    </div>
+                </div>
+                
+                <div class="panel results-panel hidden" id="results-panel">
+                    <h3>Retrieved Documents <span id="results-count" class="badge"></span></h3>
+                    <div id="retrieval-results-container" class="results-list"></div>
+                </div>
+            </section>
+
+            <section id="evaluation" class="view-section">
+                <header class="section-header">
+                    <h2>Pipeline Comparison & Evaluation</h2>
+                    <p>Comparing Pipeline A, Pipeline B, and Final Pipeline</p>
+                </header>
+                <div class="panel" style="margin-bottom: 2rem;">
+                    <h3>Pipeline Metrics</h3>
+                    <div class="table-container">
+                        <table id="pipeline-comp-table"></table>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>Retrieval Evaluation (Table J)</h3>
+                    <div class="table-container">
+                        <table id="eval-table"></table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="analyze" class="view-section">
+                <header class="section-header">
+                    <h2>Live NLP Pipeline Analysis</h2>
+                    <p>See exactly how the backend tokenizes and processes text step-by-step.</p>
+                </header>
+                <div class="panel">
+                    <textarea id="analyze-input" rows="3" placeholder="Enter text to analyze... (e.g. The Employee shall not disclose confidential information.)" style="width:100%; margin-bottom:1rem; border-radius:6px; border:1px solid #ccc; padding:0.75rem; font-family:inherit; resize:vertical;"></textarea>
+                    <button id="analyze-btn" class="primary-btn">Analyze Text</button>
+                    
+                    <div id="analyze-results" class="hidden" style="margin-top:2rem;">
+                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">1. Raw Tokenization</h4>
+                        <div id="analyze-raw" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        
+                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">2. Final Pipeline (Lemmatized & Stop-words Removed)</h4>
+                        <div id="analyze-final" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        
+                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">3. Part-of-Speech Tags</h4>
+                        <div id="analyze-pos" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
