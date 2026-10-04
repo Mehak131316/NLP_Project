@@ -1,20 +1,28 @@
+import os
+import sys
+import json
+import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sys
-import os
 
-print("Loading NLP models and preprocessing data... This may take a few moments.")
-# Import the backend which runs the notebook logic
-import backend
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+print("Loading Contract-Sentry NLP modules and document processor...")
+from document_processor import process_single_document, nlp, custom_tokenize, pipeline_final, tag_spacy_doc
 
 app = Flask(__name__)
 CORS(app)
+
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'NLP_Assessment1-20261003T034029Z-1-001', 'NLP_Assessment1', 'data')
 
 @app.route('/api/search', methods=['GET'])
 def search_query():
     q = request.args.get('q', '')
     pipeline = request.args.get('pipeline', 'Final Pipeline')
     try:
+        # Fast query processor
+        import backend
         ranked_docs, ms = backend.search(q, pipeline)
         q_type = backend.query_type(q)
         return jsonify({
@@ -22,40 +30,91 @@ def search_query():
             'type': q_type,
             'pipeline': pipeline,
             'results': ranked_docs,
-            'time_ms': ms
+            'time_ms': round(ms, 3)
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/api/upload', methods=['POST'])
-def upload():
-    return jsonify({"message": "Documents received and processed successfully by the NLP pipeline (Tier 2 connected!)"})
-
 @app.route('/api/analyze', methods=['POST'])
 def analyze_text():
-    data = request.json
+    data = request.json or {}
     text = data.get('text', '')
     try:
-        # 1. Raw tokens
-        raw = backend.custom_tokenize(text)
+        t0 = time.perf_counter()
+        raw = custom_tokenize(text)
         raw_list = [t[0] if isinstance(t, tuple) else t for t in raw]
-        
-        # 2. Final pipeline (lemmatized & stop-words removed)
-        final = backend.pipeline_final(text)
-        
-        # 3. POS Tags
-        pos_tags = backend.tag_spacy(final) if final else []
+        final = pipeline_final(text) if hasattr(pipeline_final, '__call__') else [t.lower() for t in raw_list]
+        pos_tags = tag_spacy_doc(final) if final else []
+        elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
         
         return jsonify({
             'raw': raw_list,
             'final': final,
-            'pos': pos_tags
+            'pos': pos_tags,
+            'time_ms': elapsed_ms
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/api/available-docs', methods=['GET'])
+def get_available_docs():
+    """Return available contracts in the corpus data directory."""
+    try:
+        if os.path.exists(DATA_DIR):
+            files = [
+                {"name": f, "size_kb": round(os.path.getsize(os.path.join(DATA_DIR, f)) / 1024, 1)}
+                for f in sorted(os.listdir(DATA_DIR))
+                if f.lower().endswith(('.pdf', '.docx', '.txt', '.png', '.jpg', '.jpeg'))
+            ]
+            return jsonify({"files": files})
+        return jsonify({"files": []})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/process-doc', methods=['POST'])
+@app.route('/api/upload', methods=['POST'])
+def process_document():
+    """
+    Process any PDF, DOCX, TXT or image through the full NLP pipeline
+    and return complete statistics, stage-by-stage timings, entities, and n-grams.
+    """
+    try:
+        # Check if file was uploaded via FormData
+        if 'file' in request.files:
+            uploaded_file = request.files['file']
+            filename = uploaded_file.filename
+            file_bytes = uploaded_file.read()
+            result = process_single_document(file_bytes, filename)
+            return jsonify(result)
+
+        # Check if existing filename requested from corpus
+        data = request.get_json(silent=True) or {}
+        existing_filename = data.get('filename') or request.form.get('filename')
+        
+        if existing_filename:
+            filepath = os.path.join(DATA_DIR, existing_filename)
+            if not os.path.exists(filepath):
+                return jsonify({"error": f"File not found: {existing_filename}"}), 404
+            result = process_single_document(filepath, existing_filename)
+            return jsonify(result)
+
+        # Check if raw text was sent
+        text_content = data.get('text')
+        if text_content:
+            doc_name = data.get('doc_name', 'Input_Document.txt')
+            result = process_single_document(text_content.encode('utf-8'), doc_name)
+            return jsonify(result)
+
+        return jsonify({"error": "No file or text provided."}), 400
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
     print("==================================================")
     print("Contract-Sentry NLP Backend is running on port 5000!")
+    print("Full PDF and Multi-Format Document Processing Enabled")
     print("==================================================")
     app.run(port=5000, debug=False)
