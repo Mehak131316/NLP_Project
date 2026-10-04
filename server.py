@@ -40,18 +40,35 @@ def analyze_text():
     data = request.json or {}
     text = data.get('text', '')
     try:
+        t_start = time.perf_counter()
+        
+        # 1. Raw Tokenization timing
         t0 = time.perf_counter()
         raw = custom_tokenize(text)
         raw_list = [t[0] if isinstance(t, tuple) else t for t in raw]
-        final = pipeline_final(text) if hasattr(pipeline_final, '__call__') else [t.lower() for t in raw_list]
+        raw_time_ms = round((time.perf_counter() - t0) * 1000, 3)
+        
+        # 2. Final Pipeline timing (Lemmatization & Stop-words)
+        t1 = time.perf_counter()
+        final = pipeline_final(text) if callable(pipeline_final) else [t.lower() for t in raw_list]
+        final_time_ms = round((time.perf_counter() - t1) * 1000, 3)
+        
+        # 3. POS Tagging timing
+        t2 = time.perf_counter()
         pos_tags = tag_spacy_doc(final) if final else []
-        elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
+        pos_time_ms = round((time.perf_counter() - t2) * 1000, 3)
+        
+        total_time_ms = round((time.perf_counter() - t_start) * 1000, 3)
         
         return jsonify({
             'raw': raw_list,
+            'raw_time_ms': raw_time_ms,
             'final': final,
+            'final_time_ms': final_time_ms,
             'pos': pos_tags,
-            'time_ms': elapsed_ms
+            'pos_time_ms': pos_time_ms,
+            'total_time_ms': total_time_ms,
+            'time_ms': total_time_ms
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500

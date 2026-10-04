@@ -441,12 +441,19 @@ def process_single_document(file_content, filename):
     timings["ngrams_ms"] = round((time.perf_counter() - t0) * 1000, 2)
     
     # 9. Pipeline Transformations Comparison
-    t0 = time.perf_counter()
     # Pipeline A
+    t_pipe_a = time.perf_counter()
     pipe_a_toks = [stemmer_snowball.stem(t.lower()) for t in raw_tokens if t.lower() not in NLTK_STOP and re.search(r"\w", t)]
+    pipe_a_ms = round((time.perf_counter() - t_pipe_a) * 1000, 2)
+    
     # Pipeline B
+    t_pipe_b = time.perf_counter()
     pipe_b_toks = [t.lemma_.lower() for t in nlp(cleaned[:10000]) if not t.is_space and not t.is_punct]
-    timings["pipelines_ms"] = round((time.perf_counter() - t0) * 1000, 2)
+    pipe_b_ms = round((time.perf_counter() - t_pipe_b) * 1000, 2)
+
+    # Final Pipeline time (from cleaning to hybrid to lemmatization)
+    pipe_final_ms = round(timings.get("cleaning_ms", 0) + timings.get("tokenization_ms", 0) + timings.get("lemmatization_stopwords_ms", 0), 2)
+    timings["pipelines_ms"] = round(pipe_a_ms + pipe_b_ms, 2)
     
     total_ms = round((time.perf_counter() - t_start) * 1000, 2)
     timings["total_ms"] = total_ms
@@ -491,17 +498,20 @@ def process_single_document(file_content, filename):
             "Pipeline A": {
                 "desc": "Cleaning -> NLTK Tokenization -> Snowball Stemming -> NLTK Stopwords",
                 "tokens_count": len(pipe_a_toks),
-                "sample": pipe_a_toks[:25]
+                "sample": pipe_a_toks[:25],
+                "time_ms": pipe_a_ms
             },
             "Pipeline B": {
                 "desc": "Cleaning -> spaCy Tokenization -> spaCy Lemmatization -> No Stopwords Removed",
                 "tokens_count": len(pipe_b_toks),
-                "sample": pipe_b_toks[:25]
+                "sample": pipe_b_toks[:25],
+                "time_ms": pipe_b_ms
             },
             "Final Pipeline": {
                 "desc": "Cleaning -> Number Normalization -> Hybrid Tokenization -> spaCy Lemmatization -> Domain-Aware Stopwords",
                 "tokens_count": len(final_tokens),
-                "sample": final_tokens[:25]
+                "sample": final_tokens[:25],
+                "time_ms": pipe_final_ms
             }
         }
     }

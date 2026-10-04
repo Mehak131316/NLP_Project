@@ -174,18 +174,27 @@
                             <h3>Pipeline Transformations Comparison</h3>
                             <div class="grid-3" style="gap: 1rem; margin-top: 1rem;">
                                 <div class="panel" style="background: #f8fafc; border: 1px solid var(--border-color);">
-                                    <h4>Pipeline A (Stemming)</h4>
-                                    <p class="text-muted" style="font-size: 12px;">NLTK + Snowball Stemming + NLTK Stopwords</p>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0;">Pipeline A (Stemming)</h4>
+                                        <span id="res-pipe-a-time" class="badge" style="background:#e2e8f0; color:#334155; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">NLTK + Snowball Stemming + NLTK Stopwords</p>
                                     <div id="res-pipe-a-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
                                 </div>
                                 <div class="panel" style="background: #f8fafc; border: 1px solid var(--border-color);">
-                                    <h4>Pipeline B (Lemmatization)</h4>
-                                    <p class="text-muted" style="font-size: 12px;">spaCy Lemmatization + All Words Kept</p>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0;">Pipeline B (Lemmatization)</h4>
+                                        <span id="res-pipe-b-time" class="badge" style="background:#e2e8f0; color:#334155; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">spaCy Lemmatization + All Words Kept</p>
                                     <div id="res-pipe-b-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
                                 </div>
                                 <div class="panel" style="background: #f0fdf4; border: 1px solid #86efac;">
-                                    <h4 style="color: #166534;">Final Pipeline (Selected)</h4>
-                                    <p class="text-muted" style="font-size: 12px;">Hybrid + spaCy Lemma + Domain Stopwords</p>
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0; color: #166534;">Final Pipeline (Selected)</h4>
+                                        <span id="res-pipe-final-time" class="badge" style="background:#dcfce7; color:#166534; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">Hybrid + spaCy Lemma + Domain Stopwords</p>
                                     <div id="res-pipe-final-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
                                 </div>
                             </div>
@@ -388,13 +397,27 @@
                     <button id="analyze-btn" class="primary-btn">Analyze Text</button>
                     
                     <div id="analyze-results" class="hidden" style="margin-top:2rem;">
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">1. Raw Tokenization</h4>
-                        <div id="analyze-raw" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; background:#f1f5f9; padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+                            <span style="font-weight:600; color:var(--text-main);">Pipeline Execution Time Summary</span>
+                            <span id="analyze-total-time" class="badge" style="background:var(--accent-blue); color:white; font-size:12px; font-weight:600;">Total: 0.00 ms</span>
+                        </div>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">1. Raw Tokenization</h4>
+                            <span id="analyze-raw-time" class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
+                        <div id="analyze-raw" class="file-item" style="margin-bottom:1.25rem; font-family:monospace; word-break: break-all;"></div>
                         
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">2. Final Pipeline (Lemmatized & Stop-words Removed)</h4>
-                        <div id="analyze-final" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">2. Final Pipeline (Lemmatized & Stop-words Removed)</h4>
+                            <span id="analyze-final-time" class="badge" style="background:#dcfce7; color:#166534; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
+                        <div id="analyze-final" class="file-item" style="margin-bottom:1.25rem; font-family:monospace; word-break: break-all;"></div>
                         
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">3. Part-of-Speech Tags</h4>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">3. Part-of-Speech Tags</h4>
+                            <span id="analyze-pos-time" class="badge" style="background:#ede9fe; color:#6b21a8; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
                         <div id="analyze-pos" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
                     </div>
                 </div>
