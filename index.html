@@ -73,19 +73,161 @@
             <!-- Sections -->
             <section id="upload" class="view-section">
                 <header class="section-header">
-                    <h2>Document Upload</h2>
-                    <p>Upload PDFs, Word documents, or scanned images for OCR and analysis</p>
+                    <h2>Document Processing & Analysis</h2>
+                    <p>Upload PDF contracts, Word documents, or scanned images for OCR, complete NLP pipeline analysis, and sub-millisecond execution timing.</p>
                 </header>
-                <div class="panel upload-panel">
-                    <div class="upload-area" id="drop-zone">
-                        <span class="upload-icon">📤</span>
-                        <h3>Drag & Drop Documents Here</h3>
-                        <p class="text-muted">Supports .pdf, .docx, .txt, .png, .jpg (OCR enabled)</p>
-                        <input type="file" id="file-input" multiple accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" class="hidden-input">
-                        <button class="primary-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+
+                <div class="grid-2" style="margin-bottom: 2rem;">
+                    <div class="panel upload-panel">
+                        <h3>📤 Upload Custom Contract</h3>
+                        <div class="upload-area" id="drop-zone" style="margin-top: 1rem;">
+                            <span class="upload-icon">📄</span>
+                            <h3>Drag & Drop Contract File Here</h3>
+                            <p class="text-muted">Supports .pdf (native & scanned OCR), .docx, .txt, .png, .jpg</p>
+                            <input type="file" id="file-input" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" class="hidden-input">
+                            <button class="primary-btn" onclick="document.getElementById('file-input').click()">Browse Computer</button>
+                        </div>
+                        <div id="file-list" class="file-list"></div>
+                        <button id="process-btn" class="primary-btn process-btn hidden" style="width:100%; margin-top:1rem;">⚡ Process Uploaded Document Through Full NLP Pipeline</button>
                     </div>
-                    <div id="file-list" class="file-list"></div>
-                    <button id="process-btn" class="primary-btn process-btn hidden">Process Documents</button>
+
+                    <div class="panel">
+                        <h3>📂 Or Select From Loaded Legal Corpus (32 Contracts)</h3>
+                        <p class="text-muted" style="margin-bottom: 1rem;">Pick any authentic Indian employment agreement, bond, or NDA from the dataset to run the live NLP pipeline:</p>
+                        <select id="corpus-file-select" class="custom-select" style="width: 100%; padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color); font-size: 0.95rem; margin-bottom: 1rem;">
+                            <option value="">-- Choose a Corpus PDF / Contract --</option>
+                        </select>
+                        <button id="process-corpus-btn" class="secondary-btn" style="width: 100%;" disabled>⚡ Process Selected Corpus Document</button>
+                    </div>
+                </div>
+
+                <!-- Live Processing Progress -->
+                <div id="processing-loader" class="panel hidden" style="text-align: center; padding: 2.5rem;">
+                    <div class="spinner" style="margin: 0 auto 1.5rem auto;"></div>
+                    <h3 id="processing-status-title">Executing Complete NLP Pipeline...</h3>
+                    <p id="processing-status-step" class="text-muted">Extracting text & running OCR -> Cleaning -> Tokenizing -> POS Tagging -> NER -> Pipelines...</p>
+                </div>
+
+                <!-- Document Results Panel -->
+                <div id="doc-result-panel" class="hidden">
+                    <!-- Timing Hero Banner -->
+                    <div class="panel" style="background: linear-gradient(135deg, #1e3a8a 0%, #1e1b4b 100%); color: #ffffff; margin-bottom: 1.5rem; border: none; box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.3);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                            <div>
+                                <span style="background: rgba(22, 163, 74, 0.3); color: #86efac; border: 1px solid #16a34a; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;">✓ NLP Pipeline Complete</span>
+                                <h2 id="res-filename" style="color: #ffffff; margin: 0.5rem 0 0.25rem 0; font-size: 1.75rem;">Document Name.pdf</h2>
+                                <p id="res-summary-sub" style="color: #cbd5e1; margin: 0; font-size: 0.95rem;">Format: PDF | Pages: 1 | OCR: Off</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 0.8rem; text-transform: uppercase; color: #93c5fd; letter-spacing: 1px; font-weight: 600;">Total Processing Time</div>
+                                <div id="res-total-time" style="font-size: 2.25rem; font-weight: 800; color: #fbbf24;">0.00 ms</div>
+                                <div id="res-time-sec" style="font-size: 0.85rem; color: #e2e8f0;">(0.000 seconds)</div>
+                            </div>
+                        </div>
+
+                        <!-- Stage-by-Stage Timings Grid -->
+                        <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.15);">
+                            <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: #93c5fd; margin-bottom: 0.75rem; letter-spacing: 0.5px;">⏱ Stage Execution Timings Breakdown:</div>
+                            <div id="res-timing-pills" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="cards-container" id="doc-metric-cards" style="margin-bottom: 1.5rem;"></div>
+
+                    <!-- Detailed Interactive Tabs -->
+                    <div class="panel">
+                        <div class="doc-tabs-nav" style="display: flex; gap: 8px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 1.5rem; overflow-x: auto;">
+                            <button class="doc-tab-btn active" data-tab="tab-entities">🏢 Named Entities (NER)</button>
+                            <button class="doc-tab-btn" data-tab="tab-pos">🏷️ POS Tags & Lexicon</button>
+                            <button class="doc-tab-btn" data-tab="tab-obligations">📜 Legal Obligations</button>
+                            <button class="doc-tab-btn" data-tab="tab-tokens">✂️ Token Streams & Pipelines</button>
+                            <button class="doc-tab-btn" data-tab="tab-ngrams">🔗 N-Grams</button>
+                            <button class="doc-tab-btn" data-tab="tab-text">📄 Extracted Text</button>
+                        </div>
+
+                        <!-- Tab 1: NER Entities -->
+                        <div id="tab-entities" class="doc-tab-content active">
+                            <h3>Extracted Named Entities</h3>
+                            <p class="text-muted">Domain entity recognition identifying Indian Currency (`₹`), Statutes, Durations, and Parties:</p>
+                            <div id="res-entities-badges" style="line-height: 2.2; margin-top: 1rem;"></div>
+                        </div>
+
+                        <!-- Tab 2: POS Tags -->
+                        <div id="tab-pos" class="doc-tab-content hidden">
+                            <h3>Part of Speech Tagging (spaCy vs Custom Domain Rules)</h3>
+                            <div class="table-container" style="max-height: 400px; overflow-y: auto; margin-top: 1rem;">
+                                <table id="res-pos-table"></table>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Obligations -->
+                        <div id="tab-obligations" class="doc-tab-content hidden">
+                            <h3>Extracted Obligations, Prohibitions & Rights</h3>
+                            <div class="table-container" style="max-height: 400px; overflow-y: auto; margin-top: 1rem;">
+                                <table id="res-obligations-table"></table>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Tokens & Pipelines -->
+                        <div id="tab-tokens" class="doc-tab-content hidden">
+                            <h3>Pipeline Transformations Comparison</h3>
+                            <div class="grid-3" style="gap: 1rem; margin-top: 1rem;">
+                                <div class="panel" style="background: #f8fafc; border: 1px solid var(--border-color);">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0;">Pipeline A (Stemming)</h4>
+                                        <span id="res-pipe-a-time" class="badge" style="background:#e2e8f0; color:#334155; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">NLTK + Snowball Stemming + NLTK Stopwords</p>
+                                    <div id="res-pipe-a-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
+                                </div>
+                                <div class="panel" style="background: #f8fafc; border: 1px solid var(--border-color);">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0;">Pipeline B (Lemmatization)</h4>
+                                        <span id="res-pipe-b-time" class="badge" style="background:#e2e8f0; color:#334155; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">spaCy Lemmatization + All Words Kept</p>
+                                    <div id="res-pipe-b-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
+                                </div>
+                                <div class="panel" style="background: #f0fdf4; border: 1px solid #86efac;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 4px;">
+                                        <h4 style="margin:0; color: #166534;">Final Pipeline (Selected)</h4>
+                                        <span id="res-pipe-final-time" class="badge" style="background:#dcfce7; color:#166534; font-size:11px; font-weight:600;">0 ms</span>
+                                    </div>
+                                    <p class="text-muted" style="font-size: 12px; margin-bottom: 8px;">Hybrid + spaCy Lemma + Domain Stopwords</p>
+                                    <div id="res-pipe-final-tokens" style="font-size: 13px; font-family: monospace; max-height: 250px; overflow-y: auto; word-break: break-all;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: N-Grams -->
+                        <div id="tab-ngrams" class="doc-tab-content hidden">
+                            <h3>Sentence-Bounded N-Grams</h3>
+                            <div class="grid-2" style="gap: 1.5rem; margin-top: 1rem;">
+                                <div>
+                                    <h4>Top Bigrams (2-Words)</h4>
+                                    <div class="table-container">
+                                        <table id="res-bigrams-table"></table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4>Top Trigrams (3-Words)</h4>
+                                    <div class="table-container">
+                                        <table id="res-trigrams-table"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Extracted Text -->
+                        <div id="tab-text" class="doc-tab-content hidden">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                                <h3>Extracted Text Preview</h3>
+                                <button id="toggle-raw-text-btn" class="secondary-btn" style="padding: 4px 10px; font-size: 12px;">Show Raw Uncleaned Text</button>
+                            </div>
+                            <pre id="res-text-content" style="background: #f8fafc; padding: 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); max-height: 400px; overflow-y: auto; font-family: var(--font-sans); white-space: pre-wrap; font-size: 14px; line-height: 1.6;"></pre>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -255,13 +397,27 @@
                     <button id="analyze-btn" class="primary-btn">Analyze Text</button>
                     
                     <div id="analyze-results" class="hidden" style="margin-top:2rem;">
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">1. Raw Tokenization</h4>
-                        <div id="analyze-raw" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; background:#f1f5f9; padding:0.75rem 1rem; border-radius:8px; border:1px solid var(--border-color);">
+                            <span style="font-weight:600; color:var(--text-main);">Pipeline Execution Time Summary</span>
+                            <span id="analyze-total-time" class="badge" style="background:var(--accent-blue); color:white; font-size:12px; font-weight:600;">Total: 0.00 ms</span>
+                        </div>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">1. Raw Tokenization</h4>
+                            <span id="analyze-raw-time" class="badge" style="background:#e0f2fe; color:#0369a1; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
+                        <div id="analyze-raw" class="file-item" style="margin-bottom:1.25rem; font-family:monospace; word-break: break-all;"></div>
                         
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">2. Final Pipeline (Lemmatized & Stop-words Removed)</h4>
-                        <div id="analyze-final" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">2. Final Pipeline (Lemmatized & Stop-words Removed)</h4>
+                            <span id="analyze-final-time" class="badge" style="background:#dcfce7; color:#166534; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
+                        <div id="analyze-final" class="file-item" style="margin-bottom:1.25rem; font-family:monospace; word-break: break-all;"></div>
                         
-                        <h4 style="margin-bottom:0.5rem; color:var(--accent-blue);">3. Part-of-Speech Tags</h4>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                            <h4 style="margin:0; color:var(--accent-blue);">3. Part-of-Speech Tags</h4>
+                            <span id="analyze-pos-time" class="badge" style="background:#ede9fe; color:#6b21a8; font-size:11px; font-weight:600;">0.00 ms</span>
+                        </div>
                         <div id="analyze-pos" class="file-item" style="margin-bottom:1rem; font-family:monospace; word-break: break-all;"></div>
                     </div>
                 </div>
