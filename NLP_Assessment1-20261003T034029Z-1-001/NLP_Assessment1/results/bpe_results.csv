@@ -1,29 +1,29 @@
-S.No.,Word,category,BPE Tokens,bpe_subwords,nltk,spacy,custom,GPT-2 BPE,gpt2_subwords
-1,company,common,company,1,company,company,company,company,1
-2,your,common,your,1,your,your,your,your,1
-3,this,common,this,1,this,this,this,this,1
-4,will,common,will,1,will,will,will,will,1
-5,with,common,with,1,with,with,with,with,1
-6,shall,common,shall,1,shall,shall,shall,shall,1
-7,that,common,that,1,that,that,that,that,1
-8,agreement,common,agreement,1,agreement,agreement,agreement,ag reement,2
-9,aabcns,rare,a ab c n s,5,aabcns,aabcns,aabcns,a abc ns,3
-10,aamanagara,rare,a am an agar a,5,aamanagara,aamanagara,aamanagara,a aman agara,3
-11,aamdocs,rare,a am docs,3,aamdocs,aamdocs,aamdocs,a am docs,3
-12,aanulyo,rare,a an u ly o,5,aanulyo,aanulyo,aanulyo,aan uly o,3
-13,aapkbz,rare,a ap k b z,5,aapkbz,aapkbz,aapkbz,a ap kb z,4
-14,aave,rare,a ave,2,aave,aave,aave,a ave,2
-15,abated,rare,ab ated,2,abated,abated,abated,ab ated,2
-16,abdul,rare,ab du l,3,abdul,abdul,abdul,ab d ul,3
-17,non-compete,domain,non - compe te,4,non-compete,non - compete,non-compete,non - comp ete,4
-18,non-solicitation,domain,non - s olicit ation,5,non-solicitation,non - solicitation,non-solicitation,non - sol icit ation,5
-19,confidentiality,domain,confidentiality,1,confidentiality,confidentiality,confidentiality,conf idential ity,3
-20,remuneration,domain,remuneration,1,remuneration,remuneration,remuneration,rem uner ation,3
-21,probation,domain,probation,1,probation,probation,probation,pro b ation,3
-22,termination,domain,termination,1,termination,termination,termination,termination,1
-23,indemnify,domain,in de m n if y,6,indemnify,indemnify,indemnify,ind emn ify,3
-24,stipend,domain,s ti pend,3,stipend,stipend,stipend,st ip end,3
-25,gratuity,domain,gr atuity,2,gratuity,gratuity,gratuity,gr at uity,3
-26,work-from-home,domain,work - from - ho me,6,work-from-home,work - from - home,work-from-home,work - from - home,5
-27,hereinafter,domain,hereinafter,1,hereinafter,hereinafter,hereinafter,here ina fter,3
-28,jurisdiction,domain,jur isdiction,2,jurisdiction,jurisdiction,jurisdiction,j ur isd iction,4
+S.No.,Word,category,BPE Tokens,bpe_subwords,nltk,spacy,custom
+1,company,common,company,1,company,company,company
+2,your,common,your,1,your,your,your
+3,this,common,this,1,this,this,this
+4,will,common,will,1,will,will,will
+5,with,common,with,1,with,with,with
+6,shall,common,shall,1,shall,shall,shall
+7,that,common,that,1,that,that,that
+8,agreement,common,agreement,1,agreement,agreement,agreement
+9,aabcns,rare,a ab c n s,5,aabcns,aabcns,aabcns
+10,aamanagara,rare,a am an agar a,5,aamanagara,aamanagara,aamanagara
+11,aamdocs,rare,a am docs,3,aamdocs,aamdocs,aamdocs
+12,aanulyo,rare,a an u ly o,5,aanulyo,aanulyo,aanulyo
+13,aapkbz,rare,a ap k b z,5,aapkbz,aapkbz,aapkbz
+14,aave,rare,a ave,2,aave,aave,aave
+15,abated,rare,ab ated,2,abated,abated,abated
+16,abdul,rare,ab du l,3,abdul,abdul,abdul
+17,non-compete,domain,non - compe te,4,non-compete,non - compete,non-compete
+18,non-solicitation,domain,non - s olicit ation,5,non-solicitation,non - solicitation,non-solicitation
+19,confidentiality,domain,confidentiality,1,confidentiality,confidentiality,confidentiality
+20,remuneration,domain,remuneration,1,remuneration,remuneration,remuneration
+21,probation,domain,probation,1,probation,probation,probation
+22,termination,domain,termination,1,termination,termination,termination
+23,indemnify,domain,in de m n if y,6,indemnify,indemnify,indemnify
+24,stipend,domain,s ti pend,3,stipend,stipend,stipend
+25,gratuity,domain,gr atuity,2,gratuity,gratuity,gratuity
+26,work-from-home,domain,work - from - ho me,6,work-from-home,work - from - home,work-from-home
+27,hereinafter,domain,hereinafter,1,hereinafter,hereinafter,hereinafter
+28,jurisdiction,domain,jur isdiction,2,jurisdiction,jurisdiction,jurisdiction

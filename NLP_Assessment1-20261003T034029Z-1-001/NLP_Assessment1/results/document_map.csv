@@ -1,45 +1,33 @@
 doc_id,file,format,pages,ocr_pages,unread_scanned_pages,ocr_engine,ocr_mean_conf,ocr_repairs,ocr_unresolved_amounts
-D01,01_Gintaa_Gig_Worker_Delivery_Partner_Terms.url.txt,txt,,0,0,,,0,0
-D02,01_IndusInd_Nippon_Life_Part_Time_Appointment.url.txt,txt,,0,0,,,0,0
-D03,01_Payoneer_Independent_Contractor_Agreement.url.txt,txt,,0,0,,,0,0
-D04,01_Sears_IT_Internship_Agreement.url.txt,txt,,0,0,,,0,0
-D05,01_Viasat_India_Remote_Work_Agreement.url.txt,txt,,0,0,,,0,0
-D06,01_i-Venture_Consultancy_Agreement.url.txt,txt,,0,0,,,0,0
-D07,02_AERA_Consultancy_Agreement.url.txt,txt,,0,0,,,0,0
-D08,02_Doxuno_India_Independent_Contractor_Agreement.url.txt,txt,,0,0,,,0,0
-D09,02_Jaitra_Internship_Agreement.url.txt,txt,,0,0,,,0,0
-D10,02_MealVersity_Gig_Worker_Delivery_Partner_Terms.url.txt,txt,,0,0,,,0,0
-D11,02_Reliance_Jio_Part_Time_Appointment_2023.url.txt,txt,,0,0,,,0,0
-D12,02_WonderLegal_India_Remote_Work_Agreement.url.txt,txt,,0,0,,,0,0
-D13,1669358273-Offer_Appointment_letters_required_by_NAAC_for_DVV.pdf,pdf,289.0,28,0,rapidocr 3.9.2,96.0,0,5
-D14,1714631710.pdf,pdf,7.0,0,0,,,0,0
-D15,17659708753175.pdf,pdf,48.0,3,0,rapidocr 3.9.2,96.5,0,0
-D16,2018-19-placed-student-details-Civil.pdf,pdf,100.0,0,0,,,0,0
-D17,613578483-Remote-Agreement-Pulkit-Garg-47.pdf,pdf,4.0,0,0,,,0,0
-D18,AIM (25-11-2023 09_53_38pm) - Sineka N offer letter.pdf,pdf,22.0,0,0,,,0,0
-D19,Agreement Contracts.pdf,pdf,61.0,6,0,rapidocr 3.9.2,98.4,0,0
-D20,Basic Non-Disclosure Agreement.pdf,pdf,2.0,0,0,,,0,0
-D21,CONSULTANCY_AGREEMENT.pdf,pdf,4.0,0,0,,,0,0
-D22,CONTRACTUAL-EMPLOYMENT-AGREEMENT-TEMPLATE.pdf,pdf,7.0,0,0,,,0,0
-D23,Copy of 1714631710.pdf,pdf,7.0,0,0,,,0,0
-D24,Copy of Basic Non-Disclosure Agreement.pdf,pdf,2.0,0,0,,,0,0
-D25,DVV-3.5.2.1.pdf,pdf,295.0,226,0,rapidocr 3.9.2,96.8,3,2
-D26,Delivery Partner Terms & Conditions _ MealVersity Rider Legal.pdf,pdf,16.0,0,0,,,0,0
-D27,EMPLOYMENT_AGREEMENT Startup.pdf,pdf,6.0,0,0,,,0,0
-D28,Employee Non-Solicitation Agreement (PDF).pdf,pdf,3.0,0,0,,,0,0
-D29,Employment Agreement template RazorpayRize.pdf,pdf,11.0,0,0,,,0,0
-D30,Gintaa Online Food _ Best Food Delivery App Near You.pdf,pdf,10.0,0,0,,,0,0
-D31,Internship_Agreement_Template_India.docx,docx,,0,0,,,0,0
-D32,Kanak Nagar Employment Contract.pdf,pdf,19.0,0,0,,,0,0
-D33,Microsoft Word - MT-2019 Bond & Agreement Pdf.pdf,pdf,7.0,0,0,,,0,0
-D34,Microsoft Word - Non-Compete_ Solicitation-Mayberry-final-3.pdf,pdf,7.0,0,0,,,0,0
-D35,Non-Compete Agreement Template.pdf,pdf,2.0,0,0,,,0,0
-D36,Sample Employee Non-Compete Agreement.pdf,pdf,1.0,0,0,,,0,0
-D37,Sample Remote Work Agreement - University of Maine System.pdf,pdf,5.0,0,0,,,0,0
-D38,Sample-of-Employment-Contact-PT-eng.pdf,pdf,3.0,0,0,,,0,0
-D39,Tool-2-example-part-time-staff-employment-contract.pdf,pdf,1.0,0,0,,,0,0
-D40,[YOUR NAME] [CLIENT NAME] Contractor Agreement (Ryan Robinson_s Freelance Contract Template - ryrob.com).pdf,pdf,3.0,0,0,,,0,0
-D41,aliens group offer letters.pdf,pdf,109.0,31,0,rapidocr 3.9.2,79.8,0,0
-D42,ceo-executive-employment-agreement2022.pdf,pdf,19.0,19,0,rapidocr 3.9.2,98.2,0,0
-D43,sample-independent-contractor-agreement.pdf,pdf,3.0,0,0,,,0,0
-D44,service-provider-agreement.pdf,pdf,21.0,2,0,rapidocr 3.9.2,98.6,0,0
+D01,1669358273-Offer_Appointment_letters_required_by_NAAC_for_DVV.pdf,pdf,289.0,28,0,rapidocr 3.9.2,96.0,0,5
+D02,1714631710.pdf,pdf,7.0,0,0,,,0,0
+D03,17659708753175.pdf,pdf,48.0,3,0,rapidocr 3.9.2,96.5,0,0
+D04,2018-19-placed-student-details-Civil.pdf,pdf,100.0,0,0,,,0,0
+D05,613578483-Remote-Agreement-Pulkit-Garg-47.pdf,pdf,4.0,0,0,,,0,0
+D06,AIM (25-11-2023 09_53_38pm) - Sineka N offer letter.pdf,pdf,22.0,0,0,,,0,0
+D07,Agreement Contracts.pdf,pdf,61.0,6,0,rapidocr 3.9.2,98.4,0,0
+D08,Basic Non-Disclosure Agreement.pdf,pdf,2.0,0,0,,,0,0
+D09,CONSULTANCY_AGREEMENT.pdf,pdf,4.0,0,0,,,0,0
+D10,CONTRACTUAL-EMPLOYMENT-AGREEMENT-TEMPLATE.pdf,pdf,7.0,0,0,,,0,0
+D11,Copy of 1714631710.pdf,pdf,7.0,0,0,,,0,0
+D12,Copy of Basic Non-Disclosure Agreement.pdf,pdf,2.0,0,0,,,0,0
+D13,DVV-3.5.2.1.pdf,pdf,295.0,226,0,rapidocr 3.9.2,96.8,3,2
+D14,Delivery Partner Terms & Conditions _ MealVersity Rider Legal.pdf,pdf,16.0,0,0,,,0,0
+D15,EMPLOYMENT_AGREEMENT Startup.pdf,pdf,6.0,0,0,,,0,0
+D16,Employee Non-Solicitation Agreement (PDF).pdf,pdf,3.0,0,0,,,0,0
+D17,Employment Agreement template RazorpayRize.pdf,pdf,11.0,0,0,,,0,0
+D18,Gintaa Online Food _ Best Food Delivery App Near You.pdf,pdf,10.0,0,0,,,0,0
+D19,Internship_Agreement_Template_India.docx,docx,,0,0,,,0,0
+D20,Kanak Nagar Employment Contract.pdf,pdf,19.0,0,0,,,0,0
+D21,Microsoft Word - MT-2019 Bond & Agreement Pdf.pdf,pdf,7.0,0,0,,,0,0
+D22,Microsoft Word - Non-Compete_ Solicitation-Mayberry-final-3.pdf,pdf,7.0,0,0,,,0,0
+D23,Non-Compete Agreement Template.pdf,pdf,2.0,0,0,,,0,0
+D24,Sample Employee Non-Compete Agreement.pdf,pdf,1.0,0,0,,,0,0
+D25,Sample Remote Work Agreement - University of Maine System.pdf,pdf,5.0,0,0,,,0,0
+D26,Sample-of-Employment-Contact-PT-eng.pdf,pdf,3.0,0,0,,,0,0
+D27,Tool-2-example-part-time-staff-employment-contract.pdf,pdf,1.0,0,0,,,0,0
+D28,[YOUR NAME] [CLIENT NAME] Contractor Agreement (Ryan Robinson_s Freelance Contract Template - ryrob.com).pdf,pdf,3.0,0,0,,,0,0
+D29,aliens group offer letters.pdf,pdf,109.0,31,0,rapidocr 3.9.2,79.8,0,0
+D30,ceo-executive-employment-agreement2022.pdf,pdf,19.0,19,0,rapidocr 3.9.2,98.2,0,0
+D31,sample-independent-contractor-agreement.pdf,pdf,3.0,0,0,,,0,0
+D32,service-provider-agreement.pdf,pdf,21.0,2,0,rapidocr 3.9.2,98.6,0,0
